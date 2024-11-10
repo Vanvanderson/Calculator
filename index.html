@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let runPro = true;
+        while(runPro == true){
+            let entNum = true;
+            let result = 0;
+            let myNums = [];
+            while(entNum == true){
+                myNums.push(prompt('Enter a number'));
+                let goNext = prompt(`You entered ${myNums.slice(-1)}, and have entered ${myNums.length} numbers. Enter another number(y/n)`);
+                if(goNext.toLowerCase() == 'n'){
+                    entNum = false;
+                } else{
+                    entNum = true;
+                }
+            }
+            let operation = prompt('+, -, *, or /');
+            if(operation == '+'){
+                result = Number(myNums[0]);
+                for (let i = 1; i < myNums.length; i++) {
+                    result += Number(myNums[i]);
+                }
+            } else if(operation == '-'){
+                result = myNums[0]
+                for(let i = 1; i < myNums.length; i++){
+                    result -= Number(myNums[i]);
+                }
+            } else if(operation == '*'){
+                result = myNums[0]
+                for(let i = 1; i < myNums.length; i++){
+                    result *= Number(myNums[i]);
+                }
+            } else if(operation == '/' && myNums.length == 2){
+                result = myNums[0]
+                for(let i = 1; i < myNums.length; i++){
+                    result /= Number(myNums[i]);
+                }
+            } else{
+                console.log('You can only divide 2 numbers');
+                result = null;
+            }
+            /* let again = prompt('You entered' + myNums.length + 'numbers.' + 'Your answer is ' + result + ' Calculate another number(y/n)?'); */
+            let again = prompt(`You entered ${myNums.length} numbers. Your answer is ${result}. Calculate another number(y/n)?`);
+            if(again.toLowerCase() == 'y'){
+                entNum = true;
+            } else{
+                alert('Thank you for using this calculator. Goodbye!')
+                runPro = false;
+            }
+        }
+    </script>
+</body>
+</html>
